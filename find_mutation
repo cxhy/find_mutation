@@ -1,0 +1,52 @@
+#!/usr/bin/perl -w
+use Data::Dumper qw(Dumper);
+
+my $dir = "./chuqian-data/*.txt";
+my @files = glob($dir);
+open (FH,">xx.txt");
+
+foreach (@files){
+    open (DATA,"<$_");
+    my $linenum = 1;
+    foreach (readline DATA){
+        chomp($_);
+        if($linenum == 2){
+            print FH "$_\n";
+        }
+        $linenum++;
+    }
+    close DATA;
+}
+
+close FH;
+
+my @arr;
+my @uniq_arr;
+my %count;
+open (FH2,"<./xx.txt");
+foreach (<FH2>){
+    push  @arr, $_;
+}
+close FH2;
+
+unlink "./xx.txt";
+
+@uniq_arr = grep { ++$count{ $_ } < 2; } @arr;
+
+unlink "./output.txt" if (-e "./output.txt");
+
+open (FH3,">output.txt");
+foreach (@uniq_arr){
+    print FH3 $_;
+}
+close FH3;
+
+print "hi, chuxian :
+The function of this script is to find all the different gene sequences
+from the folder and then extract the different lines from each other and 
+put them in an output called output.Txt file. I hope this helps you.
+gdz
+";
+
+
+#print Dumper \@arr;
