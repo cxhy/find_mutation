@@ -43,11 +43,6 @@ foreach (sort keys(%res)){
 }
 close FH3;
 
-print "hi, chuqian :
-The function of this script is to find all the different gene sequences
-from the folder and then extract the different lines from each other and 
-put them in an output called output.Txt file. I hope this helps you.
-gdz
-";
+print "done\n";
 
 #print Dumper \@arr;
